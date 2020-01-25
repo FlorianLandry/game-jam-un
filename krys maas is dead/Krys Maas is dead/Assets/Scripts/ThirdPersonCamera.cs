@@ -8,6 +8,7 @@ public class ThirdPersonCamera : MonoBehaviour
     public float mouseSensitivity = 10;
     public Transform target;
     public float distanceTarget = 4.0f;
+    public bool active = true;
 
     public Vector2 pitchMinMax = new Vector2(-45, 85);
 
@@ -27,18 +28,31 @@ public class ThirdPersonCamera : MonoBehaviour
         }
     }
 
+    public void setActive(bool newActive)
+    {
+        active = newActive;
+    }
+
     // Update is called once per frame
     void LateUpdate()
     {
-        yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
-        pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
-        pitch = Mathf.Clamp(pitch, pitchMinMax.x, pitchMinMax.y);
+        if (active)
+        {
+            yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
+            pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
+            pitch = Mathf.Clamp(pitch, pitchMinMax.x, pitchMinMax.y);
 
-        currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(yaw, pitch), ref rotSmoothVelocity, rotSmoothTime);
+            currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(yaw, pitch), ref rotSmoothVelocity, rotSmoothTime);
 
-        Vector3 targetRotation = new Vector3(pitch, yaw);
-        transform.eulerAngles = targetRotation;
+            Vector3 targetRotation = new Vector3(pitch, yaw);
+            transform.eulerAngles = targetRotation;
 
-        transform.position = target.position - transform.forward * distanceTarget;
+            transform.position = target.position - transform.forward * distanceTarget;
+        }
+        else
+        {
+
+        }
+        
     }
 }
