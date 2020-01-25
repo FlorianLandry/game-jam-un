@@ -25,21 +25,30 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
         if (Input.GetKey(KeyCode.D))
         {
-            transform.position += transform.right * Time.deltaTime * speed;
+            Vector3 v = Camera.main.transform.right;
+            v.y = 0f;
+            transform.position += v * speed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.Q))
         {
-            transform.position -= transform.right * Time.deltaTime * speed;
+            Vector3 v = Camera.main.transform.right;
+            v.y = 0f;
+            transform.position -= v * speed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.Z))
         {
-            transform.position += transform.forward * Time.deltaTime * speed;
+            Vector3 v = Camera.main.transform.forward;
+            v.y = 0f;
+            transform.position += v * speed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.position -= transform.forward * Time.deltaTime * speed;
+            Vector3 v = Camera.main.transform.forward;
+            v.y = 0f;
+            transform.position -= v * speed * Time.deltaTime;
         }
         if (Input.GetKeyDown(KeyCode.Space) && jumping == false)
         {

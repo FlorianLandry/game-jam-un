@@ -420,7 +420,6 @@ GameObject:
   - component: {fileID: 1024806861}
   - component: {fileID: 1024806865}
   - component: {fileID: 1024806866}
-  - component: {fileID: 1024806867}
   m_Layer: 0
   m_Name: Joueur
   m_TagString: Untagged
@@ -533,18 +532,6 @@ MonoBehaviour:
   speed: 0
   jumpingForce: 0
   player: {fileID: 0}
---- !u!114 &1024806867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1024806860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d8f89e5250593f4d9c5abc9583f56ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1451727087
 GameObject:
   m_ObjectHideFlags: 0
