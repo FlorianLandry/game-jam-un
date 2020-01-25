@@ -5,32 +5,47 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed;
-    public Rigidbody joueur;
+    public float jumpingForce;
+    private bool jumping = false;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
-        speed = 2000f;
+        speed = 20f;
+        jumpingForce = 400f;
+        player = GameObject.Find("Joueur");
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        jumping = false;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.D))
         {
-            joueur.AddForce(speed * Time.deltaTime, 0, 0);
+            transform.position += transform.right * Time.deltaTime * speed;
         }
         if (Input.GetKey(KeyCode.Q))
         {
-            joueur.AddForce(-speed * Time.deltaTime, 0, 0);
+            transform.position -= transform.right * Time.deltaTime * speed;
         }
         if (Input.GetKey(KeyCode.Z))
         {
-            joueur.AddForce(0, 0, speed * Time.deltaTime);
+            transform.position += transform.forward * Time.deltaTime * speed;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            joueur.AddForce(0, 0, -speed * Time.deltaTime);
+            transform.position -= transform.forward * Time.deltaTime * speed;
         }
+        if (Input.GetKeyDown(KeyCode.Space) && jumping == false)
+        {
+            player.GetComponent<Rigidbody>().AddForce(0, jumpingForce, 0);
+            jumping = true;
+        }
+
     }
 }
