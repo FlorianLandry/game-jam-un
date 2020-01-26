@@ -7,8 +7,8 @@ public class LightingManager : MonoBehaviour
     [SerializeField] private Light DirectionalLight;
     [SerializeField] private LightingPreset Preset;
     //Variables
-    [SerializeField, Range(0, 24)] private float TimeOfDay;
-
+    [SerializeField, Range(0, 24)] public float TimeOfDay;
+    public Material[] skies;
 
     private void Update()
     {
@@ -20,6 +20,15 @@ public class LightingManager : MonoBehaviour
             //(Replace with a reference to the game time)
             TimeOfDay += Time.deltaTime;
             TimeOfDay %= 24; //Modulus to ensure always between 0-24
+            if (TimeOfDay >= 17.65 || TimeOfDay < 6.71)
+            {
+                RenderSettings.skybox = skies[1];
+            }
+            if (TimeOfDay >= 6.71 && TimeOfDay < 17.65)
+            {
+                RenderSettings.skybox = skies[0];
+            }
+
             UpdateLighting(TimeOfDay / 24f);
         }
         else
