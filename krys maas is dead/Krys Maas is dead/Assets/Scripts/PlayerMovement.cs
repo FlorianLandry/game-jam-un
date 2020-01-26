@@ -12,9 +12,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = 20f;
-        jumpingForce = 400f;
-        player = GameObject.Find("Joueur");
+
     }
 
     private void OnCollisionEnter(Collision collision)
