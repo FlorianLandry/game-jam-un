@@ -7,20 +7,23 @@ using UnityEngine.SceneManagement;
 public class Cold : MonoBehaviour
 {
     public Slider coldBar;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool isWarming;
 
     // Update is called once per frame
     void Update()
     {
-        coldBar.value += (Time.deltaTime / 10);
-        if(coldBar.value >= 1)
+        if (isWarming)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            Debug.Log("Je me réchauffe olalah");
         }
+        else
+        {
+            coldBar.value += (Time.deltaTime / 10);
+            if (coldBar.value >= 1)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            }
+        }
+        
     }
 }
