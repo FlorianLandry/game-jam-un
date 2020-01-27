@@ -9,6 +9,7 @@ public class ThirdPersonCamera : MonoBehaviour
     public Transform target;
     public float distanceTarget = 4.0f;
     public bool active = true;
+    public Transform looked;
 
     public Vector2 pitchMinMax = new Vector2(-45, 85);
 
@@ -48,6 +49,7 @@ public class ThirdPersonCamera : MonoBehaviour
             transform.eulerAngles = targetRotation;
 
             transform.position = target.position - transform.forward * distanceTarget;
+            transform.LookAt(looked);
         }
         else
         {
