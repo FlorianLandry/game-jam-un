@@ -7,11 +7,17 @@ public class Interactable : MonoBehaviour
     bool hasInteracted = false;
     Transform player;
     public Transform interactionTransform;
+    protected PlayerController pc;
 
     public virtual void interact()
     {
         //Have to be overwritten
         Debug.Log("INTERACT");
+    }
+
+    public void Start()
+    {
+        pc = GameObject.Find("Joueur").GetComponent<PlayerController>();
     }
 
     private void Update()
@@ -43,6 +49,8 @@ public class Interactable : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
+        if (interactionTransform == null)
+            interactionTransform = transform;
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(interactionTransform.position, radius);
     }

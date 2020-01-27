@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class ItemPicker : Interactable
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public override void interact()
     {
-        
+        pickUp();
     }
 
-    // Update is called once per frame
-    void Update()
+    void pickUp()
     {
+        pc.focus = null;
+        Destroy(gameObject);
         
     }
 }
