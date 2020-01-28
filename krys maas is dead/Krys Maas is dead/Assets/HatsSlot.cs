@@ -11,6 +11,7 @@ public class HatsSlot : MonoBehaviour
         item = newItem;
         icon.sprite = item.icon;
         icon.enabled = true;
+        Debug.Log("SALUTUUUUUUUUUUUUUUU");
     }
 
     public void clearSlot()

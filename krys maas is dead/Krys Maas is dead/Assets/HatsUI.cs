@@ -10,7 +10,6 @@ public class HatsUI : MonoBehaviour
     void Start()
     {
         inventory = HatInventory.instance;
-        inventory.onHatChangedCallback += updateUI;
         hatSlots = hatsParent.GetComponentsInChildren<HatsSlot>();
     }
 
@@ -20,13 +19,25 @@ public class HatsUI : MonoBehaviour
         
     }
 
-    void updateUI()
+    public void addToHatInventory(Item item)
     {
+        Debug.Log("J'ajoute un chapo");
+        inventory.items.Add(item);
+    }
+
+    public void updateUI(Item item)
+    {
+        Debug.Log("update");
         for (int i = 0; i < hatSlots.Length; i++)
         {
             if(i < inventory.items.Count)
             {
-                
+                Debug.Log("Je regarde un slot");
+                hatSlots[i].addItem(inventory.items[i]);
+            }
+            else
+            {
+                hatSlots[i].clearSlot();
             }
         }
     }
