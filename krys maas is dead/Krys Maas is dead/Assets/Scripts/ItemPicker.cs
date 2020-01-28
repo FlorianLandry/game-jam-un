@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ItemPicker : Interactable
 {
+    public Item item;
 
     public override void interact()
     {
@@ -12,8 +13,14 @@ public class ItemPicker : Interactable
 
     void pickUp()
     {
+        Debug.Log("Picking up" + item.itemName);
+        bool isPickedUp = Inventory.instance.add(item);
         pc.focus = null;
-        Destroy(gameObject);
+        if (isPickedUp)
+        {
+            Destroy(gameObject);
+        }
+        
         
     }
 }

@@ -14,7 +14,7 @@ public class Cold : MonoBehaviour
     {
         if (isWarming)
         {
-            Debug.Log("Je me réchauffe olalah");
+
         }
         else
         {
