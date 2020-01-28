@@ -7,9 +7,9 @@ public class Inventory : MonoBehaviour
 {
     public delegate void onHatChanged(Item item);
     public onHatChanged onHatChangedCallback;
-    public delegate void onJacketChanged();
+    public delegate void onJacketChanged(Item item);
     public onJacketChanged onJacketChangedCallback;
-    public delegate void onPantsChanged();
+    public delegate void onPantsChanged(Item item);
     public onPantsChanged onPantsChangedCallback;
     public static Inventory instance;
     #region Singleton
@@ -23,8 +23,13 @@ public class Inventory : MonoBehaviour
             return;
         }
         instance = this;
-        instance.onHatChangedCallback += GameObject.Find("Canvas").GetComponent<HatsUI>().addToHatInventory;
-        instance.onHatChangedCallback += GameObject.Find("Canvas").GetComponent<HatsUI>().updateUI;
+        GameObject canvas = GameObject.Find("Canvas");
+        instance.onHatChangedCallback += canvas.GetComponent<HatsUI>().addToHatInventory;
+        instance.onHatChangedCallback += canvas.GetComponent<HatsUI>().updateUI;
+        instance.onJacketChangedCallback += canvas.GetComponent<JacketsUi>().addToJacketInventory;
+        instance.onJacketChangedCallback += canvas.GetComponent<JacketsUi>().updateUI;
+        instance.onPantsChangedCallback += canvas.GetComponent<PantsUI>().addToPantsInventory;
+        instance.onPantsChangedCallback += canvas.GetComponent<PantsUI>().updateUI;
     }
 
     #endregion
@@ -52,11 +57,20 @@ public class Inventory : MonoBehaviour
                 }
             } else if(item.type == "pants")
             {
-                Debug.Log(item.name);
+                if (onHatChangedCallback != null)
+                {
+                    onPantsChangedCallback.Invoke(item);
+                }
+            } else if(item.type == "jacket")
+            {
+                if (onJacketChangedCallback != null)
+                {
+                    onJacketChangedCallback.Invoke(item);
+                }
             }
             else
             {
-                Debug.Log(item.name);
+                Debug.Log("C'est pas un item d'armure à équiper :/");
             }
 
             
