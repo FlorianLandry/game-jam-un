@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class HatsSlot : MonoBehaviour
 {
     public Image icon;
-    Item item;
+    public Item item;
 
     public void addItem(Item newItem)
     {

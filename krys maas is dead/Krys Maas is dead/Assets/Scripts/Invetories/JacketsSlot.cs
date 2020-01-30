@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class JacketsSlot : MonoBehaviour
 {
     public Image icon;
-    Item item;
+    public Item item;
 
     public void addItem(Item newItem)
     {

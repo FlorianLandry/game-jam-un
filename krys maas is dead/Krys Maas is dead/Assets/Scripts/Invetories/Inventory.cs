@@ -42,39 +42,35 @@ public class Inventory : MonoBehaviour
 
     public bool add(Item item)
     {
-        if (!item.isDefaultItem)
-        {   
-            if(items.Count >= space)
-            {
-                Debug.Log("Not enough space");
-                return false;
-            }
-            if(item.type == "hat")
-            {
-                if (onHatChangedCallback != null)
-                {
-                    onHatChangedCallback.Invoke(item);
-                }
-            } else if(item.type == "pants")
-            {
-                if (onHatChangedCallback != null)
-                {
-                    onPantsChangedCallback.Invoke(item);
-                }
-            } else if(item.type == "jacket")
-            {
-                if (onJacketChangedCallback != null)
-                {
-                    onJacketChangedCallback.Invoke(item);
-                }
-            }
-            else
-            {
-                Debug.Log("C'est pas un item d'armure à équiper :/");
-            }
-
-            
+        if(items.Count >= space)
+        {
+            Debug.Log("Not enough space");
+            return false;
         }
+        if(item.type == "hat")
+        {
+            if (onHatChangedCallback != null)
+            {
+                onHatChangedCallback.Invoke(item);
+            }
+        } else if(item.type == "pants")
+        {
+            if (onHatChangedCallback != null)
+            {
+                onPantsChangedCallback.Invoke(item);
+            }
+        } else if(item.type == "jacket")
+        {
+            if (onJacketChangedCallback != null)
+            {
+                onJacketChangedCallback.Invoke(item);
+            }
+        }
+        else
+        {
+            Debug.Log("C'est pas un item d'armure à équiper :/");
+        } 
+        
         return true;
     }
 
