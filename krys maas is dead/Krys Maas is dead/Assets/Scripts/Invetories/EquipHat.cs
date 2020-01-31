@@ -14,7 +14,7 @@ public class EquipHat : MonoBehaviour
 
     void swapHats()
     {
-        if(hatToEquip == null)
+        if(hatToEquip.item == null)
         {
             Debug.Log("Choisis une case où ya un chat-pot stp :(");
             return;

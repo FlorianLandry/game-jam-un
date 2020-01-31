@@ -14,7 +14,7 @@ public class EquipPants : MonoBehaviour
 
     void swapPants()
     {
-        if (pantsToEquip == null)
+        if (pantsToEquip.item == null)
         {
             Debug.Log("Choisis une case où ya un chat-pot stp :(");
             return;

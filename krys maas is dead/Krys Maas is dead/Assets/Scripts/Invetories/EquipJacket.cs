@@ -14,7 +14,7 @@ public class EquipJacket : MonoBehaviour
 
     void swapJackets()
     {
-        if (jacketToEquip == null)
+        if (jacketToEquip.item == null)
         {
             Debug.Log("Choisis une case où ya un chat-pot stp :(");
             return;

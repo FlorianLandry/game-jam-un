@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space) && jumping == false)
         {
-            player.GetComponent<Rigidbody>().AddForce(0, jumpingForce, 0);
+            player.GetComponent<Rigidbody>().velocity = Vector3.up * jumpingForce;
             jumping = true;
         }
 
