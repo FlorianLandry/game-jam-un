@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EquipmentMenu : MonoBehaviour
 {
-    public static bool gameIsPaused = false;
+    public bool gameIsPaused = false;
     public GameObject pauseMenuUI;
 
     // Start is called before the first frame update

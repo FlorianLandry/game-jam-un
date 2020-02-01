@@ -10,6 +10,8 @@ public class ThirdPersonCamera : MonoBehaviour
     public float distanceTarget = 4.0f;
     public bool active = true;
     public Transform looked;
+    public PauseMenu pauseMenu;
+    public EquipmentMenu equipmentMenu;
 
     public Vector2 pitchMinMax = new Vector2(-45, 85);
 
@@ -22,7 +24,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private void Start()
     {
-        if(lockCursor)
+        if (lockCursor)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -37,6 +39,24 @@ public class ThirdPersonCamera : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        if (pauseMenu.gameIsPaused || equipmentMenu.gameIsPaused)
+        {
+            lockCursor = false;
+        }
+        else
+        {
+            lockCursor = true;
+        }
+        if (lockCursor)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
         if (active)
         {
             yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
