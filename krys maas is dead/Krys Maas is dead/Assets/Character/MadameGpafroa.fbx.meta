@@ -21,7 +21,12 @@ ModelImporter:
   - first:
       74: 8349542763059015795
     second: Walk
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TextureBouche
+    second: {fileID: 2100000, guid: 8def288c479a2bb45b555e95295d70da, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -244,7 +249,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.0075
+    globalScale: 0.75
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
